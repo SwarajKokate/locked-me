@@ -24,13 +24,13 @@ public class FileOperationsImplementation implements FileOperations {
 
     @Override
     public String addFile(String fileName) {
-        boolean fileExists = FileOperationsImplementation.checkIfFileExists(Path.of("./main" + fileName));
+        boolean fileExists = FileOperationsImplementation.checkIfFileExists(Path.of("./main/" + fileName));
 
         try {
             if(fileExists) {
                 return "File " + fileName + " already exists";
             } else {
-                Files.createFile(Path.of("./main" + fileName));
+                Files.createFile(Path.of("./main/" + fileName));
                 return "File " + fileName + "created successfully";
             }
         } catch (IOException e) {
