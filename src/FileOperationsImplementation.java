@@ -16,20 +16,35 @@ public class FileOperationsImplementation implements FileOperations {
         return false;
     }
 
+    public static boolean checkIfFileExists(Path filePath) {
+        FileOperationsImplementation.createMainFolderIfNotExist();
+
+        return Files.exists(filePath);
+    }
+
     @Override
     public String addFile(String fileName) {
-        FileOperationsImplementation.createMainFolderIfNotExist();
-        Path filePath = Path.of("./main/" + fileName);
+        boolean fileExists = FileOperationsImplementation.checkIfFileExists(Path.of("./main/" + fileName));
 
         try {
-            File file = new File(String.valueOf(filePath));
-
-            if(file.exists()) {
+            if(fileExists) {
                 return "File " + fileName + " already exists";
             } else {
-                Files.createFile(filePath);
+                Files.createFile(Path.of("./main/" + fileName));
                 return "File " + fileName + "created successfully";
             }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    @Override
+    public String deleteFile(String fileName) {
+        try {
+               boolean fileDeleted = Files.deleteIfExists(Path.of("./main/" + fileName));
+                return (fileDeleted) ? "File " + fileName + " deleted successfully!!" : "File " + fileName + " does not exists";
         } catch (IOException e) {
             e.printStackTrace();
         }
