@@ -2,10 +2,14 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class FileOperationsImplementation implements FileOperations {
 
-    public static boolean createMainFolderIfNotExist() {
+    private static boolean createMainFolderIfNotExist() {
         File file = new File("main");
 
         if(!file.exists()) {
@@ -16,7 +20,7 @@ public class FileOperationsImplementation implements FileOperations {
         return false;
     }
 
-    public static boolean checkIfFileExists(Path filePath) {
+    private static boolean checkIfFileExists(Path filePath) {
         FileOperationsImplementation.createMainFolderIfNotExist();
 
         return Files.exists(filePath);
@@ -50,6 +54,46 @@ public class FileOperationsImplementation implements FileOperations {
         }
 
         return null;
+    }
+
+    @Override
+    public String searchFile(String fileName) {
+        List<String> fileLocations = new ArrayList<>();
+        getAbsoluteFilePath("main", fileName, fileLocations);
+
+        if(!fileLocations.isEmpty()) {
+           return "File " + fileName + "found at " + fileLocations;
+        } else {
+            return "File with name " + fileName + " not found";
+        }
+
+    }
+
+    @Override
+    public String displayFiles(boolean sortingEnabled) {
+        if(sortingEnabled == true) {
+            File file = new File("main");
+            List<File> files = Arrays.asList(file.listFiles());
+            Collections.sort(files);
+            return "Files in main directory in ascending order :" + files;
+        } else {
+            File file = new File("main");
+            List<File> files = Arrays.asList(file.listFiles());
+            return "Files in main directory :" + files;
+        }
+    }
+
+    private void getAbsoluteFilePath(String path, String fileName, List<String> fileLocations) {
+        File file = new File(path);
+        List<File> fileList = Arrays.asList(file.listFiles());
+
+        if(!fileList.isEmpty() && fileList != null) {
+            for(File indexFile : fileList) {
+                if(indexFile.getName().equals(fileName)) {
+                    fileLocations.add(indexFile.getAbsolutePath());
+                }
+            }
+        }
     }
 
 }
