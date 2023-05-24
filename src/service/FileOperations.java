@@ -1,3 +1,11 @@
+package service;
+
+/**
+ * This interface provides a prototype for the application
+ *
+ * @author Swaraj Kokate
+ */
+
 public interface FileOperations {
 
     String addFile(String fileName);
