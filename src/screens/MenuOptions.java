@@ -5,7 +5,7 @@ package screens;
  *
  * @author Swaraj Kokate
  */
-public class MainScreen {
+public class MenuOptions {
 
     public static void printWelcomeScreen() {
         String companyDetails = String.format("*****************************************************\n"
@@ -20,7 +20,7 @@ public class MainScreen {
 
     public static void displayMenu() {
         String menu = "\n\n****** Select any option number from below and press Enter ******\n\n"
-                + "1) Retrieve all files inside \"main\" folder\n" + "2) Display menu for File operations\n"
+                + "1) Retrieve all files inside \"main\" folder in ascending order\n" + "2) Display menu for File operations\n"
                 + "3) Exit program\n"
                 + "Enter option : ";
         System.out.println(menu);

@@ -60,7 +60,7 @@ public class FileOperationsImplementation implements FileOperations {
                 return "File " + fileName + " already exists";
             } else {
                 Files.createFile(Path.of("./main/" + fileName));
-                return "File " + fileName + "created successfully";
+                return "File " + fileName + " created successfully";
             }
         } catch (IOException e) {
             e.printStackTrace();

@@ -1,10 +1,9 @@
 package util;
 
-import screens.MainScreen;
+import screens.MenuOptions;
 import service.FileOperations;
 import service.implementation.FileOperationsImplementation;
 
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -23,7 +22,7 @@ public class HandleMenuOptions {
         Scanner scanner = new Scanner(System.in);
         do {
             try {
-                MainScreen.displayMenu();
+                MenuOptions.displayMenu();
                 int input = scanner.nextInt();
 
                 switch (input) {
@@ -57,7 +56,7 @@ public class HandleMenuOptions {
         Scanner scanner = new Scanner(System.in);
         do {
             try {
-                MainScreen.displayFileMenuOptions();
+                MenuOptions.displayFileMenuOptions();
                 int input = scanner.nextInt();
 
                 switch (input) {

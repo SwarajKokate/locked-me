@@ -1,4 +1,4 @@
-import screens.MainScreen;
+import screens.MenuOptions;
 import util.HandleMenuOptions;
 
 /**
@@ -7,7 +7,7 @@ import util.HandleMenuOptions;
 public class LockedMeApplication {
 
     public static void main(String[] args) {
-        MainScreen.printWelcomeScreen();
+        MenuOptions.printWelcomeScreen();
         HandleMenuOptions.handleWelcomeScreenInput();
     }
 
